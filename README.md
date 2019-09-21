@@ -4,4 +4,4 @@
 
 Supports common atomic operations fetch_add, exchange, store, load, compare_exchange.
 
-Single header include atomic_uint128.h 
+Single header include atomic_uint128.h, optionally atomic_uint128.natvis for slightly improved debugging visualizations in Visual Studio
