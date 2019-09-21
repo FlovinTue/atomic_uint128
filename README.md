@@ -3,3 +3,5 @@
 
 
 Supports common atomic operations fetch_add, exchange, store, load, compare_exchange.
+
+Single header include atomic_uint128.h 
