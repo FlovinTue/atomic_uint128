@@ -36,7 +36,7 @@ namespace gdul{
 union uint128
 {
 	constexpr uint128() : myU64{ 0 } {}
-	constexpr uint128(std::uint64_t low) : myU64{ low ,  } {}
+	constexpr uint128(std::uint64_t low) : myU64{ low , 0ULL } {}
 	constexpr uint128(std::uint64_t low, std::uint64_t high) : myU64{ low,high } {}
 
 	inline constexpr bool operator==(const uint128& other) const {
