@@ -21,7 +21,7 @@
 //SOFTWARE.
 
 
-#ifdef _WIN64
+#if  defined(_MSC_VER) && !defined(__INTEL_COMPILER)
 #include <intrin.h>
 #endif
 #include <cstdint>
@@ -36,7 +36,7 @@ namespace gdul{
 union uint128
 {
 	constexpr uint128() : myU64{ 0 } {}
-	constexpr uint128(std::uint64_t low) : myU64{ low , 0ULL } {}
+	constexpr uint128(std::uint64_t low) : myU64{ low , 0ull } {}
 	constexpr uint128(std::uint64_t low, std::uint64_t high) : myU64{ low,high } {}
 
 	inline constexpr bool operator==(const uint128& other) const {
@@ -283,7 +283,7 @@ bool atomic_uint128::cas_internal(std::int64_t* const expected, const std::int64
 {
 	return _InterlockedCompareExchange128(reinterpret_cast<volatile std::int64_t*>(&myStorage.myS64[0]), desired[1], desired[0], expected);
 }
-#elif defined(__GNUC__)
+#elif defined(__GNUC__) || defined(__clang__)
 bool atomic_int128::cas_internal(std::int64_t* const expected, const std::int64_t* desired)
 {
 	bool result;
